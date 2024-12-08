@@ -3,24 +3,11 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
-import {
-  Smile,
-  Paperclip,
-  Zap,
-  Video,
-  MoreVertical,
-  Search,
-  Star,
-  Tag,
-} from "lucide-react";
-import Image from "next/image";
-import React, { useEffect, useState } from "react";
-import { toast } from "@/hooks/use-toast";
-import axios from "axios";
-import { useAccount } from "wagmi";
+import { Video } from "lucide-react";
+import React, { useState } from "react";
 import Link from "next/link";
+import axios from "axios";
 
 export default function ChatInterface({
   params,
@@ -49,6 +36,11 @@ export default function ChatInterface({
       setMessages([...messages, newMessage]);
       setInputMessage("");
     }
+  };
+
+  const chargeHandler = async () => {
+    const { data } = await axios.post("/api/create-charge");
+    console.log(data);
   };
 
   return (
@@ -151,8 +143,8 @@ export default function ChatInterface({
               onChange={(e) => setInputMessage(e.target.value)}
               className="flex-1"
             />
-            <Button type="button" variant="outline">
-              Create an Offer
+            <Button onClick={chargeHandler} type="button" variant="outline">
+              Pay
             </Button>
             <Button type="submit">Send</Button>
           </form>

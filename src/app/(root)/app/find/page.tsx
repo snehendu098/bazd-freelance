@@ -7,9 +7,6 @@ export const dynamic = "force-dynamic";
 
 const FindPage = async () => {
   const gigs = await getGigs();
-
-  console.log(gigs);
-
   return (
     <>
       <section className="text-center">
