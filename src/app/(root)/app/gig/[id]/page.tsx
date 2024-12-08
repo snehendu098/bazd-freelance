@@ -4,9 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { useAddress } from "@coinbase/onchainkit/identity";
 import { EthChip } from "@/components/core/app/eth-chip";
 import ContactFreelancerBtn from "@/components/core/app/contact-freelancer-btn";
 

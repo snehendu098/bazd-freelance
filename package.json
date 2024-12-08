@@ -11,6 +11,7 @@
   "dependencies": {
     "@anon-aadhaar/core": "^2.4.2",
     "@anon-aadhaar/react": "^2.4.2",
+    "@coinbase/coinbase-sdk": "^0.11.2",
     "@coinbase/onchainkit": "^0.35.8",
     "@huddle01/react": "^2.2.4",
     "@huddle01/server-sdk": "^2.5.5",

@@ -8,6 +8,8 @@ import { Video } from "lucide-react";
 import React, { useState } from "react";
 import Link from "next/link";
 import axios from "axios";
+import { useAccount } from "wagmi";
+import { Checkout, CheckoutButton } from "@coinbase/onchainkit/checkout";
 
 export default function ChatInterface({
   params,
@@ -23,6 +25,7 @@ export default function ChatInterface({
     },
   ]);
   const [inputMessage, setInputMessage] = useState("");
+  const account = useAccount();
 
   const handleSendMessage = (e: React.FormEvent) => {
     e.preventDefault();
@@ -39,8 +42,11 @@ export default function ChatInterface({
   };
 
   const chargeHandler = async () => {
-    const { data } = await axios.post("/api/create-charge");
-    console.log(data);
+    const { data } = await axios.post("/api/create-charge", {
+      amount: 0.00001,
+      to: account.address,
+    });
+    return data.data.id;
   };
 
   return (
@@ -143,9 +149,9 @@ export default function ChatInterface({
               onChange={(e) => setInputMessage(e.target.value)}
               className="flex-1"
             />
-            <Button onClick={chargeHandler} type="button" variant="outline">
-              Pay
-            </Button>
+            <Checkout className="w-20" chargeHandler={chargeHandler}>
+              <CheckoutButton />
+            </Checkout>
             <Button type="submit">Send</Button>
           </form>
         </div>

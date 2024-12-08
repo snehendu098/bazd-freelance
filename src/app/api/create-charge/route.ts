@@ -1,5 +1,5 @@
 export async function POST(req: Request, res: Response) {
-  const { amount } = await req.json();
+  const { amount, to } = await req.json();
 
   const options = {
     method: "POST",
@@ -11,7 +11,10 @@ export async function POST(req: Request, res: Response) {
     body: JSON.stringify({
       local_price: { amount: amount.toString(), currency: "ETH" },
       pricing_type: "fixed_price",
-      metadata: {},
+      metadata: {
+        amount,
+        to,
+      },
     }),
   };
 
@@ -21,5 +24,5 @@ export async function POST(req: Request, res: Response) {
   );
   const data = await response.json();
 
-  return Response.json({ data });
+  return Response.json(data);
 }
