@@ -3,6 +3,8 @@ import React from "react";
 import { getGigs } from "@/lib/db-function";
 import JobCard from "@/components/core/app/job-card";
 
+export const dynamic = "force-dynamic";
+
 const FindPage = async () => {
   const gigs = await getGigs();
 

@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { useAddress } from "@coinbase/onchainkit/identity";
 import { EthChip } from "@/components/core/app/eth-chip";
+import ContactFreelancerBtn from "@/components/core/app/contact-freelancer-btn";
 
 const SingleGig = async ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = await params;
@@ -67,7 +68,7 @@ const SingleGig = async ({ params }: { params: Promise<{ id: string }> }) => {
             </p>
           </div>
         </div>
-        <Button>Contact Freelancer</Button>
+        <ContactFreelancerBtn id={gig.id} freelancerAddress={gig.owner} />
       </div>
     </div>
   );

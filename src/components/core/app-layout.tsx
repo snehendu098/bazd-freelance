@@ -1,9 +1,8 @@
 "use client";
 
 import React from "react";
-import { ConnectWallet, Wallet } from "@coinbase/onchainkit/wallet";
+import { WalletDefault } from "@coinbase/onchainkit/wallet";
 import Link from "next/link";
-import { Avatar, Name } from "@coinbase/onchainkit/identity";
 
 const AppLayout = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -39,12 +38,7 @@ const AppLayout = ({ children }: { children: React.ReactNode }) => {
             </nav>
           </div>
           <div className="flex items-center gap-4">
-            <Wallet>
-              <ConnectWallet>
-                <Avatar className="h-6 w-6" />
-                <Name />
-              </ConnectWallet>
-            </Wallet>
+            <WalletDefault />
           </div>
         </div>
       </header>
