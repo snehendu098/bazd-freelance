@@ -10,7 +10,7 @@ export const getAccessToken = async ({
   role: Role;
 }) => {
   const response = await fetch(
-    `http://localhost:3000/api/token?roomId=${roomId}&role=${role}`
+    `https://bazd-freelnance.vercel.app/api/token?roomId=${roomId}&role=${role}`
   );
 
   const token = await response.text();
